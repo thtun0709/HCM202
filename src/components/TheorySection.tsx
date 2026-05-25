@@ -5,6 +5,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Anchor, BookOpen, HeartHandshake, Eye, Shield, Users, RefreshCw } from "lucide-react";
 import FadeUp from "./FadeUp";
+import Image from "next/image";
 
 const THEORY_TABS = [
   {
@@ -111,67 +112,81 @@ export default function TheorySection() {
           <div className="gold-divider w-24 mx-auto mt-4" />
         </FadeUp>
 
-        {/* Tabs */}
-        <FadeUp delay={0.15} className="mb-20">
-          <Tabs defaultValue="leadership">
-            <TabsList className="grid grid-cols-3 w-full mb-8 rounded-2xl p-1"
-              style={{ background: "rgba(255,255,255,0.03)", border: "1px solid rgba(255,255,255,0.06)" }}>
-              {THEORY_TABS.map((tab) => (
-                <TabsTrigger
-                  key={tab.id}
-                  value={tab.id}
-                  id={`theory-tab-${tab.id}`}
-                  className="flex items-center gap-2 rounded-xl text-xs md:text-sm font-medium transition-all duration-300 cursor-pointer data-[state=active]:text-yellow-300"
-                  style={{ color: "#7a7672" }}
-                >
-                  {tab.icon}
-                  <span className="hidden sm:inline">{tab.label}</span>
-                  <span className="sm:hidden">{tab.label.split(" ")[0]}</span>
-                </TabsTrigger>
-              ))}
-            </TabsList>
+        {/* Layout with Image and Tabs */}
+        <div className="flex flex-col lg:flex-row gap-12 items-start mb-20">
+          <div className="flex-1 w-full lg:sticky lg:top-24">
+             <FadeUp delay={0.1}>
+               <div className="relative aspect-square md:aspect-[4/3] lg:aspect-[4/5] rounded-3xl overflow-hidden shadow-2xl border border-white/10 w-full max-w-md mx-auto">
+                 <Image src="/images/theory_leadership.png" alt="Theory Leadership" fill className="object-cover" />
+                 <div className="absolute inset-0 bg-gradient-to-t from-[#0c0c0e] via-transparent to-transparent opacity-80" />
+               </div>
+             </FadeUp>
+          </div>
+          
+          <div className="flex-[1.2] w-full">
+            {/* Tabs */}
+            <FadeUp delay={0.15}>
+              <Tabs defaultValue="leadership">
+                <TabsList className="grid grid-cols-3 w-full mb-8 rounded-2xl p-1"
+                  style={{ background: "rgba(255,255,255,0.03)", border: "1px solid rgba(255,255,255,0.06)" }}>
+                  {THEORY_TABS.map((tab) => (
+                    <TabsTrigger
+                      key={tab.id}
+                      value={tab.id}
+                      id={`theory-tab-${tab.id}`}
+                      className="flex items-center gap-2 rounded-xl text-xs md:text-sm font-medium transition-all duration-300 cursor-pointer data-[state=active]:text-yellow-300"
+                      style={{ color: "#7a7672" }}
+                    >
+                      {tab.icon}
+                      <span className="hidden sm:inline">{tab.label}</span>
+                      <span className="sm:hidden">{tab.label.split(" ")[0]}</span>
+                    </TabsTrigger>
+                  ))}
+                </TabsList>
 
-            {THEORY_TABS.map((tab) => (
-              <TabsContent key={tab.id} value={tab.id}>
-                <motion.div
-                  initial={{ opacity: 0, y: 10 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.4 }}
-                  className="rounded-3xl p-6 md:p-8"
-                  style={{ background: "rgba(255,255,255,0.02)", border: "1px solid rgba(255,255,255,0.06)" }}
-                >
-                  <h3 className="text-xl md:text-2xl font-bold mb-2"
-                    style={{ fontFamily: "'Playfair Display', serif", color: "#f0ede8" }}>
-                    {tab.label}
-                  </h3>
-                  <p className="text-xs mb-6" style={{ color: "#7a7672" }}>
-                    Hồ Chí Minh chỉ rõ, tổ chức cách mạng muốn vững mạnh thì phải:
-                  </p>
+                {THEORY_TABS.map((tab) => (
+                  <TabsContent key={tab.id} value={tab.id}>
+                    <motion.div
+                      initial={{ opacity: 0, y: 10 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ duration: 0.4 }}
+                      className="rounded-3xl p-6 md:p-8"
+                      style={{ background: "rgba(255,255,255,0.02)", border: "1px solid rgba(255,255,255,0.06)" }}
+                    >
+                      <h3 className="text-xl md:text-2xl font-bold mb-2"
+                        style={{ fontFamily: "'Playfair Display', serif", color: "#f0ede8" }}>
+                        {tab.label}
+                      </h3>
+                      <p className="text-xs mb-6" style={{ color: "#7a7672" }}>
+                        Hồ Chí Minh chỉ rõ, tổ chức cách mạng muốn vững mạnh thì phải:
+                      </p>
 
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-3 mb-6">
-                    {tab.content.map((point, i) => (
-                      <div key={i} className="flex items-start gap-3 rounded-xl p-3"
-                        style={{ background: "rgba(255,255,255,0.02)", border: "1px solid rgba(255,255,255,0.04)" }}>
-                        <div className="w-5 h-5 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5 text-xs font-bold"
-                          style={{ background: "rgba(212,175,55,0.15)", color: "#D4AF37" }}>
-                          {i + 1}
-                        </div>
-                        <p className="text-sm leading-relaxed" style={{ color: "#c8c5c0" }}>{point}</p>
+                      <div className="grid grid-cols-1 md:grid-cols-2 gap-3 mb-6">
+                        {tab.content.map((point, i) => (
+                          <div key={i} className="flex items-start gap-3 rounded-xl p-3"
+                            style={{ background: "rgba(255,255,255,0.02)", border: "1px solid rgba(255,255,255,0.04)" }}>
+                            <div className="w-5 h-5 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5 text-xs font-bold"
+                              style={{ background: "rgba(212,175,55,0.15)", color: "#D4AF37" }}>
+                              {i + 1}
+                            </div>
+                            <p className="text-sm leading-relaxed" style={{ color: "#c8c5c0" }}>{point}</p>
+                          </div>
+                        ))}
                       </div>
-                    ))}
-                  </div>
 
-                  <div className="rounded-2xl p-4"
-                    style={{ background: "rgba(212,175,55,0.04)", border: "1px solid rgba(212,175,55,0.15)" }}>
-                    <p className="text-sm italic leading-relaxed text-center" style={{ color: "#D4AF37" }}>
-                      {tab.highlight}
-                    </p>
-                  </div>
-                </motion.div>
-              </TabsContent>
-            ))}
-          </Tabs>
-        </FadeUp>
+                      <div className="rounded-2xl p-4"
+                        style={{ background: "rgba(212,175,55,0.04)", border: "1px solid rgba(212,175,55,0.15)" }}>
+                        <p className="text-sm italic leading-relaxed text-center" style={{ color: "#D4AF37" }}>
+                          {tab.highlight}
+                        </p>
+                      </div>
+                    </motion.div>
+                  </TabsContent>
+                ))}
+              </Tabs>
+            </FadeUp>
+          </div>
+        </div>
 
         {/* 5 Core Values */}
         <FadeUp delay={0.1}>

@@ -4,6 +4,7 @@ import { useRef } from "react";
 import { useInView } from "framer-motion";
 import { AlertTriangle, Users, Clock, TrendingDown, Swords, Compass, Shield, Target, Scale } from "lucide-react";
 import FadeUp from "./FadeUp";
+import Image from "next/image";
 
 const PAIN_POINTS = [
   {
@@ -122,30 +123,41 @@ export default function ProblemSection() {
         {/* Divider */}
         <div className="w-full h-px bg-zinc-200 my-16" />
 
-        {/* SLIDE 3 — Core questions */}
-        <FadeUp delay={0.1}>
-          <h3 className="text-xl md:text-2xl font-bold mb-2 text-[#111827]" style={{ fontFamily: "'Playfair Display', serif" }}>
-            Vấn Đề Cốt Lõi Đặt Ra
-          </h3>
-          <p className="text-sm mb-8 text-[#4b5563]">
-            Mỗi tổ chức muốn phát triển bền vững cần phải nghiêm túc trả lời được 4 câu hỏi định vị cốt lõi:
-          </p>
-        </FadeUp>
-
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-12">
-          {CORE_QUESTIONS.map((item, i) => (
-            <FadeUp key={i} delay={i * 0.06 + 0.15}>
-              <div
-                className="flex items-start gap-4 rounded-2xl p-5 h-full transition-all duration-300 bg-white border border-gray-200/80 shadow-sm"
-              >
-                <div className="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0"
-                  style={{ background: `${item.color}10`, color: item.color }}>
-                  {item.icon}
-                </div>
-                <p className="text-sm font-semibold leading-relaxed pt-1.5" style={{ color: "#374151" }}>{item.question}</p>
+        <div className="flex flex-col lg:flex-row gap-12 items-center mb-16">
+          <div className="flex-1 w-full">
+            <FadeUp delay={0.1}>
+              <div className="relative aspect-[4/3] rounded-3xl overflow-hidden shadow-lg border border-gray-200/60 w-full max-w-lg mx-auto">
+                <Image src="/images/problem_illustration.png" alt="Problem Illustration" fill className="object-cover" />
               </div>
             </FadeUp>
-          ))}
+          </div>
+          <div className="flex-1 w-full">
+            {/* SLIDE 3 — Core questions */}
+            <FadeUp delay={0.2}>
+              <h3 className="text-xl md:text-2xl font-bold mb-2 text-[#111827]" style={{ fontFamily: "'Playfair Display', serif" }}>
+                Vấn Đề Cốt Lõi Đặt Ra
+              </h3>
+              <p className="text-sm mb-8 text-[#4b5563]">
+                Mỗi tổ chức muốn phát triển bền vững cần phải nghiêm túc trả lời được 4 câu hỏi định vị cốt lõi:
+              </p>
+            </FadeUp>
+
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              {CORE_QUESTIONS.map((item, i) => (
+                <FadeUp key={i} delay={i * 0.06 + 0.3}>
+                  <div
+                    className="flex items-start gap-4 rounded-2xl p-5 h-full transition-all duration-300 bg-white border border-gray-200/80 shadow-sm"
+                  >
+                    <div className="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0"
+                      style={{ background: `${item.color}10`, color: item.color }}>
+                      {item.icon}
+                    </div>
+                    <p className="text-sm font-semibold leading-relaxed pt-1.5" style={{ color: "#374151" }}>{item.question}</p>
+                  </div>
+                </FadeUp>
+              ))}
+            </div>
+          </div>
         </div>
 
         {/* Key message */}

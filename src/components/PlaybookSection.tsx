@@ -16,6 +16,7 @@ import {
   RefreshCw,
 } from "lucide-react";
 import FadeUp from "./FadeUp";
+import Image from "next/image";
 
 const FOUNDER_TRAITS = [
   { icon: <Target className="w-5 h-5" />, title: "Xác Định Tầm Nhìn", desc: "Xác định tầm nhìn rõ ràng và định hướng chiến lược dài hạn." },
@@ -71,6 +72,13 @@ export default function PlaybookSection() {
             Chuyển dịch các nguyên lý tổ chức cốt lõi vào xây dựng đội ngũ startup & làm việc nhóm sinh viên
           </p>
           <div className="gold-divider-light" />
+        </FadeUp>
+
+        {/* Feature Image */}
+        <FadeUp delay={0.05} className="mb-16">
+          <div className="relative aspect-video md:aspect-[21/9] rounded-3xl overflow-hidden shadow-xl border border-gray-200/80 max-w-5xl mx-auto">
+            <Image src="/images/playbook_team.png" alt="Startup Team Playbook" fill className="object-cover" />
+          </div>
         </FadeUp>
 
         {/* SLIDE 8 */}

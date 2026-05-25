@@ -3,6 +3,7 @@
 import { useRef } from "react";
 import { motion, useInView } from "framer-motion";
 import { ChevronDown, BookOpen, Layers } from "lucide-react";
+import Image from "next/image";
 
 
 function FadeUp({ children, delay = 0, className = "" }: { children: React.ReactNode; delay?: number; className?: string }) {
@@ -36,6 +37,17 @@ export default function HeroSection() {
       className="relative min-h-screen flex flex-col justify-center items-center overflow-hidden hero-bg noise-overlay"
       id="hero"
     >
+      {/* Background Image */}
+      <div className="absolute inset-0 z-0 pointer-events-none">
+        <Image 
+          src="/images/hero_background.png" 
+          alt="Hero Background" 
+          fill 
+          className="object-cover opacity-40 mix-blend-overlay" 
+          priority
+        />
+      </div>
+
       {/* Animated background circles */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden">
         <motion.div
@@ -71,26 +83,21 @@ export default function HeroSection() {
         {/* Main title */}
         <FadeUp delay={0.15}>
           <h1
-            className="text-4xl md:text-6xl lg:text-7xl font-bold leading-tight mb-6"
+            className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight md:leading-snug mb-4 max-w-4xl mx-auto"
             style={{ fontFamily: "'Playfair Display', serif", color: "#f0ede8" }}
           >
-            Từ Quan Niệm của{" "}
-            <span className="shimmer-text">Hồ Chí Minh</span>
-            <br />
-            về Xây Dựng Đảng
+            Từ Quan Niệm Của <span className="shimmer-text">Hồ Chí Minh</span><br className="hidden md:block" />
+            Về Xây Dựng Đảng
           </h1>
         </FadeUp>
 
         <FadeUp delay={0.3}>
-          <p className="text-lg md:text-xl mb-4 font-light" style={{ color: "#d0cdc8" }}>
-            đến bài học{" "}
-            <span style={{ color: "#D4AF37" }} className="font-semibold">
-              Xây Dựng Đội Ngũ Nòng Cốt
-            </span>{" "}
-            trong Doanh Nghiệp / Startup
-          </p>
-          <p className="text-base mb-10 font-light italic" style={{ color: "#7a7672" }}>
-            đối với sinh viên khi bước vào môi trường làm việc
+          <div className="text-lg md:text-2xl font-light mb-4 max-w-3xl mx-auto" style={{ color: "#d0cdc8", lineHeight: 1.6 }}>
+            Đến Bài Học <span style={{ color: "#D4AF37" }} className="font-semibold">Xây Dựng Đội Ngũ Nòng Cốt</span><br className="hidden md:block" />
+            Trong Doanh Nghiệp & Startup
+          </div>
+          <p className="text-sm md:text-base mb-10 font-light italic" style={{ color: "#9ca3af" }}>
+            — Dành cho sinh viên khi bước vào môi trường làm việc —
           </p>
         </FadeUp>
 
