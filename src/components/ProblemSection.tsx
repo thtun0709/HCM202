@@ -172,7 +172,7 @@ export default function ProblemSection() {
             <p className="text-base md:text-lg font-medium leading-relaxed" style={{ color: "#1f2937" }}>
               Muốn tổ chức mạnh thì phải có{" "}
               <span className="font-extrabold" style={{ color: "#8B0000" }}>người cầm lái vững vàng</span>{" "}
-              and{" "}
+              và{" "}
               <span className="font-extrabold" style={{ color: "#D4AF37" }}>đội ngũ nòng cốt có kỷ luật, đạo đức, năng lực</span>.
             </p>
           </div>
