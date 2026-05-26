@@ -123,7 +123,7 @@ export default function ConclusionSection() {
         >
           <div className="gold-divider w-24 mx-auto mb-6" />
           <p className="text-xs tracking-widest uppercase" style={{ color: "#5a5652" }}>
-            Tập Thể Sinh Viên CQ5 — Đại Học FPT &nbsp;·&nbsp; HCM202 2026
+             Nhóm Speed - Half1_SE1831 — Đại Học FPT &nbsp;·&nbsp; HCM202 2026
           </p>
         </motion.div>
       </div>
